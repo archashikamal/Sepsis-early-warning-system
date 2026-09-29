@@ -1,0 +1,46 @@
+{
+  "best_model_name": "lstm_attention",
+  "model_config": {
+    "model_type": "AttnLSTM",
+    "n_features": 8,
+    "hidden_size": 32,
+    "num_layers": 1,
+    "dropout": 0.2
+  },
+  "preprocessing": {
+    "feature_cols": [
+      "heartrate",
+      "respiration",
+      "temperature",
+      "sao2",
+      "systemicsystolic",
+      "systemicdiastolic",
+      "systemicmean",
+      "lactate"
+    ],
+    "lookback_hours": 8,
+    "horizon_hours": 6,
+    "baseline_hours": 4,
+    "normalization": "per-patient z-score against first BASELINE_HOURS hours"
+  },
+  "test_metrics": {
+    "test_auroc": 0.9813412569091664,
+    "test_auprc": 0.7872726753978434,
+    "false_alarms_per_patient_day": 0.46952273133527994,
+    "median_lead_time_hours": 8.0
+  },
+  "all_candidates_comparison": {
+    "lstm_attention": {
+      "test_auroc": 0.9813412569091664,
+      "test_auprc": 0.7872726753978434,
+      "false_alarms_per_pt_day": 0.46952273133527994,
+      "median_lead_time_hr": 8.0
+    },
+    "tcn": {
+      "test_auroc": 0.9803132945605805,
+      "test_auprc": 0.7817501426495175,
+      "false_alarms_per_pt_day": 0.7402728951915633,
+      "median_lead_time_hr": 9.0
+    }
+  }
+}
